@@ -65,7 +65,7 @@
   
   <!-- Critical CSS - Load synchronously -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/index.css?v=4">
   
   <!-- Non-critical CSS - Load asynchronously -->
   <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -89,7 +89,7 @@
   <script defer src="static/js/fontawesome.all.min.js"></script>
   <script defer src="static/js/bulma-carousel.min.js"></script>
   <script defer src="static/js/bulma-slider.min.js"></script>
-  <script defer src="static/js/index.js"></script>
+  <script defer src="static/js/index.js?v=4"></script>
   
   <!-- Structured Data for Academic Papers -->
   <script type="application/ld+json">
@@ -154,23 +154,22 @@
     <i class="fas fa-chevron-up"></i>
   </button>
 
-  <!-- Navigation: top bar on all screens, table of contents in a left sidebar on wide screens -->
-  <nav class="site-nav" aria-label="Site">
-    <div class="site-nav-inner">
-      <a class="site-nav-brand" href="#top">MIMO-Bench</a>
-      <div class="site-nav-actions">
-        <button class="site-nav-toc-toggle" type="button" aria-expanded="false" aria-controls="toc">
-          <i class="fas fa-list-ul"></i> Contents
-        </button>
-        <a class="site-nav-btn" href="static/pdfs/paper.pdf" target="_blank"><i class="fas fa-file-pdf"></i><span>Paper</span></a>
-        <a class="site-nav-btn site-nav-home" href="https://saumya-svm.github.io/"><i class="fas fa-home"></i><span>Homepage</span></a>
-      </div>
-    </div>
-  </nav>
+  <!-- Navigation: fixed left sidebar on desktop; top bar + slide-out drawer on small screens -->
+  <header class="mobile-bar">
+    <button class="mobile-bar-toggle" type="button" aria-expanded="false" aria-controls="sidebar" aria-label="Open navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <a class="mobile-bar-brand" href="#top">MIMO-Bench</a>
+    <a class="mobile-bar-home" href="https://saumya-svm.github.io/" aria-label="Saumya Mundra's homepage"><i class="fas fa-home"></i></a>
+  </header>
 
-  <aside class="toc" id="toc" aria-label="Contents">
-    <div class="toc-title">Contents</div>
-    <ol class="toc-list">
+  <aside class="sidebar-nav" id="sidebar" aria-label="Site navigation">
+    <a class="sidebar-home" href="https://saumya-svm.github.io/"><i class="fas fa-arrow-left"></i> Saumya Mundra</a>
+    <a class="sidebar-brand" href="#top">MIMO-Bench</a>
+    <p class="sidebar-tagline">Visual reasoning under Multi-Instance Multi-Object challenges</p>
+
+    <div class="sidebar-heading">On this page</div>
+    <ol class="sidebar-links">
       <li><a href="#abstract">Abstract</a></li>
       <li><a href="#key-findings">Key Findings</a></li>
       <li><a href="#benchmark">MIMO-Bench</a></li>
@@ -178,10 +177,15 @@
       <li><a href="#findings">What Makes MIMO Hard?</a></li>
       <li><a href="#BibTeX">BibTeX</a></li>
     </ol>
-    <div class="toc-footer">
-      <a href="https://saumya-svm.github.io/"><i class="fas fa-arrow-left"></i> Saumya Mundra's homepage</a>
-    </div>
+
+    <div class="sidebar-heading">Resources</div>
+    <ul class="sidebar-resources">
+      <li><a href="static/pdfs/paper.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a></li>
+      <li><span class="is-soon"><i class="fab fa-github"></i> Code <em>soon</em></span></li>
+      <li><span class="is-soon"><i class="fas fa-database"></i> Data <em>soon</em></span></li>
+    </ul>
   </aside>
+  <div class="sidebar-backdrop" aria-hidden="true"></div>
 
   <main id="main-content">
   <section class="hero" id="top">
@@ -224,7 +228,7 @@
                   <span class="button is-normal is-rounded is-dark is-coming-soon" title="Coming soon" aria-disabled="true">
                     <span class="icon"><i class="fab fa-github"></i></span>
                     <span>Code</span>
-                    <span class="coming-soon-tag">Coming soon</span>
+                    <span class="coming-soon-tag"><span class="cs-full">Coming </span>soon</span>
                   </span>
                 </span>
 
@@ -232,7 +236,7 @@
                   <span class="button is-normal is-rounded is-dark is-coming-soon" title="Coming soon" aria-disabled="true">
                     <span class="icon"><i class="fas fa-database"></i></span>
                     <span>Data</span>
-                    <span class="coming-soon-tag">Coming soon</span>
+                    <span class="coming-soon-tag"><span class="cs-full">Coming </span>soon</span>
                   </span>
                 </span>
 

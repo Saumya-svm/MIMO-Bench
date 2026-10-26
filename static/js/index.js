@@ -142,32 +142,23 @@ $(document).ready(function() {
 
 })
 
-// Table of contents: highlight the section in view, and toggle the dropdown on narrow screens
+// Sidebar navigation: highlight the section in view; open/close the drawer on small screens
 document.addEventListener('DOMContentLoaded', function() {
-    const toc = document.getElementById('toc');
-    const toggle = document.querySelector('.site-nav-toc-toggle');
-    const links = document.querySelectorAll('.toc-list a');
+    const toggle = document.querySelector('.mobile-bar-toggle');
+    const backdrop = document.querySelector('.sidebar-backdrop');
+    const links = document.querySelectorAll('.sidebar-links a');
 
-    const closeToc = () => {
-        if (!toc || !toggle) return;
-        toc.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
+    const setOpen = open => {
+        document.body.classList.toggle('nav-open', open);
+        if (toggle) toggle.setAttribute('aria-expanded', String(open));
     };
 
-    if (toc && toggle) {
-        toggle.addEventListener('click', event => {
-            event.stopPropagation();
-            const open = toc.classList.toggle('open');
-            toggle.setAttribute('aria-expanded', String(open));
-        });
-        document.addEventListener('click', event => {
-            if (!toc.contains(event.target)) closeToc();
-        });
-        document.addEventListener('keydown', event => {
-            if (event.key === 'Escape') closeToc();
-        });
-        links.forEach(link => link.addEventListener('click', closeToc));
-    }
+    if (toggle) toggle.addEventListener('click', () => setOpen(!document.body.classList.contains('nav-open')));
+    if (backdrop) backdrop.addEventListener('click', () => setOpen(false));
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') setOpen(false);
+    });
+    document.querySelectorAll('.sidebar-nav a').forEach(link => link.addEventListener('click', () => setOpen(false)));
 
     const sections = Array.from(links)
         .map(link => document.querySelector(link.getAttribute('href')))
