@@ -141,3 +141,25 @@ $(document).ready(function() {
     setupVideoCarouselAutoplay();
 
 })
+
+// Highlight the nav link for the section currently in view
+document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('.site-nav-links a[href^="#"]');
+    const sections = Array.from(links)
+        .map(link => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+    if (!sections.length || !('IntersectionObserver' in window)) return;
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            links.forEach(link => {
+                const isActive = link.getAttribute('href') === '#' + entry.target.id;
+                link.classList.toggle('active', isActive);
+                if (isActive) link.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+            });
+        });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+
+    sections.forEach(section => observer.observe(section));
+});

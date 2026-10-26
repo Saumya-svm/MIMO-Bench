@@ -784,3 +784,27 @@ a:focus {
 
 .results-carousel .item img { max-height: 520px; object-fit: contain; width: 100%; background: #fff; }
 .section-title { margin-bottom: 1.25rem !important; }
+
+/* ===== Section navigation ===== */
+.site-nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: saturate(180%) blur(8px); -webkit-backdrop-filter: saturate(180%) blur(8px); border-bottom: 1px solid var(--border-color); }
+.site-nav-inner { max-width: 960px; margin: 0 auto; padding: 0 16px; display: flex; align-items: center; gap: 1.25rem; height: 52px; }
+.site-nav-brand { font-weight: 800; color: var(--text-primary); white-space: nowrap; }
+.site-nav-brand:hover { color: var(--primary-color); }
+.site-nav-links { display: flex; align-items: center; gap: 0.25rem; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; flex: 1; }
+.site-nav-links::-webkit-scrollbar { display: none; }
+.site-nav-links a { color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; padding: 0.35rem 0.65rem; border-radius: 8px; white-space: nowrap; transition: var(--transition); }
+.site-nav-links a:hover { color: var(--primary-color); background: var(--background-accent); }
+.site-nav-links a.active { color: var(--primary-color); background: #eff6ff; font-weight: 600; }
+.site-nav-links .site-nav-ext:first-of-type { margin-left: auto; }
+.site-nav-links .site-nav-ext { color: var(--text-primary); }
+section[id] { scroll-margin-top: 60px; }
+@media (max-width: 640px) {
+  .site-nav-brand { display: none; }
+  .site-nav-inner { gap: 0; }
+  .site-nav-links .site-nav-ext:first-of-type { margin-left: 0; }
+}
+
+/* ===== Coming-soon link buttons ===== */
+.button.is-dark.is-coming-soon { background: var(--secondary-color) !important; cursor: default; box-shadow: none; }
+.button.is-dark.is-coming-soon:hover { transform: none; box-shadow: none; background: var(--secondary-color) !important; }
+.coming-soon-tag { margin-left: 0.5rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: rgba(255,255,255,0.22); padding: 0.1rem 0.45rem; border-radius: 999px; }
