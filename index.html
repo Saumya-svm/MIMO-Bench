@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <!-- TODO: Replace with your paper title and author names -->
+  <meta name="title" content="MIMO-Bench - What do MLLMs know about Waldo? Evaluating Visual Reasoning under Multi-Instance Multi-Object Challenges">
+  <!-- TODO: Write a compelling 150-160 character description of your research -->
+  <meta name="description" content="MIMO-Bench: 3,802 image-question pairs testing attribute binding and counting in dense multi-instance scenes, where state-of-the-art MLLMs trail humans by over 30 points.">
+  <!-- TODO: Add 5-10 relevant keywords for your research area -->
+  <meta name="keywords" content="MIMO-Bench, multimodal large language models, MLLM, benchmark, visual reasoning, attribute binding, counting, referring expressions, computer vision">
+  <!-- TODO: List all authors -->
+  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <!-- TODO: Replace with your institution or lab name -->
+  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
+  <!-- TODO: Same as paper title above -->
+  <meta property="og:title" content="What do MLLMs know about Waldo? Evaluating Visual Reasoning under Multi-Instance Multi-Object Challenges">
+  <!-- TODO: Same as description above -->
+  <meta property="og:description" content="MIMO-Bench: 3,802 image-question pairs testing attribute binding and counting in dense multi-instance scenes, where state-of-the-art MLLMs trail humans by over 30 points.">
+  <!-- TODO: Replace with your actual website URL -->
+  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
+  <!-- TODO: Create a 1200x630px preview image and update path -->
+  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/fig1_conse.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MIMO-Bench - Research Preview">
+  <meta property="article:published_time" content="2026-01-01T00:00:00.000Z">
+  <meta property="article:author" content="FIRST_AUTHOR_NAME">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="MLLM">
+  <meta property="article:tag" content="visual reasoning">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- TODO: Replace with your lab/institution Twitter handle -->
+  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
+  <!-- TODO: Replace with first author's Twitter handle -->
+  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
+  <!-- TODO: Same as paper title above -->
+  <meta name="twitter:title" content="What do MLLMs know about Waldo? Evaluating Visual Reasoning under Multi-Instance Multi-Object Challenges">
+  <!-- TODO: Same as description above -->
+  <meta name="twitter:description" content="MIMO-Bench: 3,802 image-question pairs testing attribute binding and counting in dense multi-instance scenes, where state-of-the-art MLLMs trail humans by over 30 points.">
+  <!-- TODO: Same as social preview image above -->
+  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/fig1_conse.jpg">
+  <meta name="twitter:image:alt" content="MIMO-Bench - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="What do MLLMs know about Waldo? Evaluating Visual Reasoning under Multi-Instance Multi-Object Challenges">
+  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
+  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="CVPR 2026">
+  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <!-- TODO: Replace with your paper title and authors -->
+  <title>MIMO-Bench | What do MLLMs know about Waldo? Evaluating Visual Reasoning under Multi-Instance Multi-Object Challenges</title>
+  
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "What do MLLMs know about Waldo? Evaluating Visual Reasoning under Multi-Instance Multi-Object Challenges",
+    "description": "MIMO-Bench: 3,802 image-question pairs testing attribute binding and counting in dense multi-instance scenes, where state-of-the-art MLLMs trail humans by over 30 points.",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "FIRST_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "SECOND_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      }
+    ],
+    "datePublished": "2026-01-01",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CVPR 2026"
+    },
+    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
+    "image": "https://YOUR_DOMAIN.com/static/images/fig1_conse.jpg",
+    "keywords": ["MLLM", "visual reasoning", "benchmark", "machine learning", "computer vision"],
+    "abstract": "MIMO-Bench: 3,802 image-question pairs testing attribute binding and counting in dense multi-instance scenes, where state-of-the-art MLLMs trail humans by over 30 points.",
+    "citation": "@inproceedings{mimobench2026}",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "Multimodal Large Language Models"
+      },
+      {
+        "@type": "Thing", 
+        "name": "Visual Reasoning"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "INSTITUTION_OR_LAB_NAME",
+    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
+    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
+    "sameAs": [
+      "https://twitter.com/YOUR_TWITTER_HANDLE",
+      "https://github.com/YOUR_GITHUB_USERNAME"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">What do MLLMs know about &ldquo;Waldo&rdquo;?</h1>
+            <h2 class="subtitle is-4">Evaluating Visual Reasoning under Multi-Instance Multi-Object Challenges</h2>
+            <div class="is-size-5 publication-authors">
+              <!-- TODO: Replace with your paper authors and their personal links -->
+              <span class="author-block">
+                <a href="FIRST_AUTHOR_LINK" target="_blank">First Author</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="SECOND_AUTHOR_LINK" target="_blank">Second Author</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="THIRD_AUTHOR_LINK" target="_blank">Third Author</a><sup>2</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <!-- TODO: Replace with your institutions -->
+              <span class="author-block"><sup>1</sup>Institution One &nbsp; <sup>2</sup>Institution Two</span>
+              <br>
+              <span class="author-block"><b>CVPR 2026</b></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="static/pdfs/paper.pdf" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+
+                <!-- TODO: Replace with your GitHub repository URL -->
+                <span class="link-block">
+                  <a href="https://github.com/YOUR_REPO" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- TODO: Replace with your dataset URL (e.g. Hugging Face) -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/YOUR_DATASET" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-database"></i></span>
+                    <span>MIMO-Bench</span>
+                  </a>
+                </span>
+
+                <!-- TODO: Update with your arXiv paper ID -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/ARXIV_PAPER_ID" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- Teaser figure -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <figure class="mimo-figure">
+        <img src="static/images/fig1_conse.jpg" alt="Comparison of existing benchmark images with sparse objects against a dense MIMO-Bench scene with many similar distractors and a long referring expression">
+      </figure>
+      <h2 class="subtitle has-text-centered">
+        <b>Existing benchmarks vs. the MIMO setting.</b> Existing benchmarks ask about objects that are easy to tell apart (&ldquo;the bottle&rdquo;). In MIMO scenes, many instances of the same category act as distractors. Referring to one of them takes a long compositional expression, such as &ldquo;the <i>blue handled</i> bottle <i>placed on</i> the <i>top-most</i> shelf <i>of</i> the <i>right-most steel</i> rack.&rdquo;
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Recent advances in Multimodal Large Language Models (MLLMs) have led to significant progress in visual reasoning capabilities. However, existing benchmarks curate image-question pairs pertaining to object categories with few instances, enabling trivial object referencing and limited visual ambiguity. In this work, we introduce <b>MIMO-Bench</b>, a benchmark for evaluating MLLMs in a <b>M</b>ulti-<b>I</b>nstance per <b>M</b>ulti-<b>O</b>bject categories (MIMO) setting. Each image-question pair in our benchmark pertains to instances belonging to object categories with multiple instances. The presence of such similar feature distractors causes hindrance in basic visual reasoning tasks, necessitating the referring expression to be composed of multiple visual subtasks to uniquely and unambiguously identify the target object. MIMO-Bench comprises 3,802 image-question pairs across attribute binding and numerical counting tasks. Despite impressive performances on existing benchmarks, both SOTA open-source (InternVL, QwenVL) and proprietary (Gemini, GPT-5) models exhibit substantially lower performance on MIMO-Bench, highlighting their limitations in the MIMO setting.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Key findings -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered section-title">Key Findings</h2>
+    <div class="finding-grid">
+      <div class="finding-card">
+        <h3>1. A benchmark for dense scenes</h3>
+        <p>MIMO-Bench contains 3,402 attribute-binding and 400 numerical-counting questions over scenes with many instances per object category.</p>
+      </div>
+      <div class="finding-card">
+        <h3>2. Current MLLMs struggle</h3>
+        <p>On real images, the best zero-shot model reaches only <b>52.8%</b> I<sub>ACC</sub> on attribute binding and <b>56.7%</b> I<sub>MRA</sub> on counting. Humans score close to 90%.</p>
+      </div>
+      <div class="finding-card">
+        <h3>3. Referring expressions and distractors are key bottlenecks</h3>
+        <p>Visual prompting improves I<sub>ACC</sub> by about <b>15.5 points</b> on average. Graying and inpainting out distractors improves performance further.</p>
+      </div>
+      <div class="finding-card">
+        <h3>4. Iterative visual access helps</h3>
+        <p>Letting the model choose a relevant region and look again consistently improves accuracy. Chain-of-Thought prompting does not reliably help.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Benchmark -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered section-title">MIMO-Bench</h2>
+    <div class="content has-text-justified">
+      <p>
+        MIMO-Bench evaluates MLLMs in scenes where <b>dense same-category instances</b> act as natural visual distractors. Telling them apart requires <b>compositional referring expressions (REs)</b> that combine attributes, actions or states, and relations to neighbouring objects. The benchmark covers two tasks, on both real (SA-1B) and synthetic images:
+      </p>
+      <ul>
+        <li><b>Attribute Binding (AB):</b> multiple-choice questions that check whether the model attaches each specified attribute to the <i>same</i> target instance.</li>
+        <li><b>Numerical Counting (NC):</b> open-ended counting of the instances that match an RE. Counts are organised hierarchically, so region-level child counts sum to their parent count.</li>
+      </ul>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-value">3,802</div><div class="stat-label">image-question pairs</div></div>
+      <div class="stat-card"><div class="stat-value">3,402</div><div class="stat-label">attribute-binding questions</div></div>
+      <div class="stat-card"><div class="stat-value">400</div><div class="stat-label">counting questions</div></div>
+      <div class="stat-card"><div class="stat-value">47.7</div><div class="stat-label">mean same-category distractors per target</div></div>
+      <div class="stat-card"><div class="stat-value">9.6</div><div class="stat-label">visual subtasks per query (about 2&times; prior benchmarks)</div></div>
+    </div>
+
+    <figure class="mimo-figure">
+      <img src="static/images/claude.jpg" alt="Example attribute-binding and numerical-counting questions on MIMO-Bench images" loading="lazy">
+      <figcaption><b>Tasks.</b> Attribute binding (left) and numerical counting (right), each centred on a target instance or target group in the image.</figcaption>
+    </figure>
+
+    <figure class="mimo-figure">
+      <img src="static/images/pipe_final.jpg" alt="MIMO-Bench creation pipeline from annotation to human verification" loading="lazy">
+      <figcaption><b>Creation pipeline.</b> AB questions are generated by mapping instance annotations to a hierarchical attribute dictionary. NC questions are generated from REs that describe groups. Human answering and verification keep only visually grounded, unambiguous QA pairs.</figcaption>
+    </figure>
+
+    <div class="columns">
+      <div class="column is-7">
+        <figure class="mimo-figure">
+          <img src="static/images/description_complexity_distributions.jpg" alt="Distributions of referring expression length and composition" loading="lazy">
+          <figcaption>Distribution of RE length and composition (relations, attributes/actions, objects).</figcaption>
+        </figure>
+      </div>
+      <div class="column is-5">
+        <figure class="mimo-figure">
+          <img src="static/images/distractor_count_2.jpg" alt="Per-category instance counts in images that contain each category" loading="lazy">
+          <figcaption>Per-category instance counts, computed with SAM3. Categories such as person, vase and pot average several tens of instances per image.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Results -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered section-title">Results</h2>
+    <div class="content has-text-justified">
+      <p>
+        We evaluate 23 configurations of API-accessed and open-weight MLLMs. Both tasks are far from solved. On real attribute binding the strongest model trails humans by about <b>36 points</b>. Several open-weight models score at or barely above the majority-answer baseline.
+      </p>
+    </div>
+    <div class="table-wrap">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th rowspan="3">Model</th>
+            <th colspan="4" class="sep">Attribute Binding (AB)</th>
+            <th colspan="6" class="sep">Numerical Counting (NC)</th>
+          </tr>
+          <tr>
+            <th colspan="2" class="sep">Real</th><th colspan="2" class="sep">Synthetic</th>
+            <th colspan="3" class="sep">Real</th><th colspan="3" class="sep">Synthetic</th>
+          </tr>
+          <tr>
+            <th class="sep">I<sub>ACC</sub></th><th>G<sub>ACC</sub></th>
+            <th class="sep">I<sub>ACC</sub></th><th>G<sub>ACC</sub></th>
+            <th class="sep">I<sub>MRA</sub></th><th>L<sub>MRA</sub></th><th>G<sub>MRA</sub></th>
+            <th class="sep">I<sub>MRA</sub></th><th>L<sub>MRA</sub></th><th>G<sub>MRA</sub></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr class="group-row"><td colspan="11">Chance &amp; Human Baselines</td></tr>
+            <tr><td>Chance (Random)</td><td>15.8</td><td>15.6</td><td class="sep">15.8</td><td>15.3</td><td class="sep">–</td><td>–</td><td>–</td><td class="sep">–</td><td>–</td><td>–</td></tr>
+            <tr><td>Chance (Majority)</td><td>34.3</td><td>35.5</td><td class="sep">34.3</td><td>33.1</td><td class="sep">–</td><td>–</td><td>–</td><td class="sep">–</td><td>–</td><td>–</td></tr>
+            <tr class="human-row"><td>Human</td><td>89.3</td><td>86.7</td><td class="sep">85.7</td><td>87.5</td><td class="sep">87.7</td><td>86.4</td><td>90.1</td><td class="sep">89.6</td><td>87.4</td><td>92.0</td></tr>
+            <tr class="group-row"><td colspan="11">API-accessed MLLMs</td></tr>
+            <tr><td>Gemini-3.5 Flash (Low)</td><td>45.5</td><td>44.8</td><td class="sep best">73.0</td><td class="best">75.6</td><td class="sep second">52.5</td><td>49.4</td><td>46.7</td><td class="sep best">66.9</td><td class="best">66.0</td><td class="best">67.2</td></tr>
+            <tr><td>Gemini-3.1 Pro Preview (Low)</td><td>46.5</td><td>46.3</td><td class="sep second">71.8</td><td class="second">73.5</td><td class="sep best">56.7</td><td class="best">55.8</td><td class="second">63.3</td><td class="sep second">64.0</td><td class="second">62.6</td><td class="second">64.1</td></tr>
+            <tr><td>Gemini-2.5 Flash</td><td class="second">51.3</td><td class="second">51.9</td><td class="sep">48.1</td><td>42.1</td><td class="sep">30.0</td><td>28.3</td><td>38.3</td><td class="sep">47.2</td><td>41.2</td><td>51.4</td></tr>
+            <tr><td>Gemini-2.5 Pro</td><td>49.1</td><td>49.5</td><td class="sep">47.2</td><td>44.9</td><td class="sep">37.3</td><td>24.2</td><td class="best">71.7</td><td class="sep">56.1</td><td>53.2</td><td>63.9</td></tr>
+            <tr><td>GPT-5 (minimal)</td><td>32.0</td><td>31.2</td><td class="sep">28.0</td><td>24.1</td><td class="sep">45.8</td><td>47.5</td><td>36.7</td><td class="sep">43.0</td><td>40.8</td><td>47.1</td></tr>
+            <tr><td>GPT-5 (medium)</td><td class="best">52.8</td><td class="best">53.4</td><td class="sep">49.8</td><td>48.1</td><td class="sep">51.5</td><td class="second">55.0</td><td>56.7</td><td class="sep">47.5</td><td>42.8</td><td>54.3</td></tr>
+            <tr><td>GLM-4.5V</td><td>50.3</td><td>50.0</td><td class="sep">41.7</td><td>33.8</td><td class="sep">33.9</td><td>36.2</td><td>38.3</td><td class="sep">47.3</td><td>48.5</td><td>38.6</td></tr>
+            <tr><td>InternVL3.5-241B-A28B</td><td>47.6</td><td>45.2</td><td class="sep">43.3</td><td>42.9</td><td class="sep">47.8</td><td>50.0</td><td>39.5</td><td class="sep">51.2</td><td>50.6</td><td>50.1</td></tr>
+            <tr><td>InternVL3-78B</td><td>40.2</td><td>40.3</td><td class="sep">37.6</td><td>35.0</td><td class="sep">38.9</td><td>43.3</td><td>38.3</td><td class="sep">36.6</td><td>34.2</td><td>34.3</td></tr>
+            <tr class="group-row"><td colspan="11">Locally evaluated open-weight MLLMs</td></tr>
+            <tr><td>Qwen3-VL-32B-Instruct</td><td>47.7</td><td>48.5</td><td class="sep">47.0</td><td>45.0</td><td class="sep">38.5</td><td>35.4</td><td>55.0</td><td class="sep">53.2</td><td>54.8</td><td>49.8</td></tr>
+            <tr><td>Qwen3-VL-8B-Instruct</td><td>42.4</td><td>42.0</td><td class="sep">36.2</td><td>32.5</td><td class="sep">34.2</td><td>28.3</td><td>43.3</td><td class="sep">47.6</td><td>48.9</td><td>35.5</td></tr>
+            <tr><td>Qwen3-VL-30B-A3B-Instruct</td><td>36.6</td><td>33.2</td><td class="sep">28.2</td><td>27.1</td><td class="sep">25.0</td><td>35.4</td><td>20.0</td><td class="sep">41.0</td><td>44.5</td><td>38.8</td></tr>
+            <tr><td>Qwen2.5-VL-72B-Instruct</td><td>38.6</td><td>38.7</td><td class="sep">50.6</td><td>45.1</td><td class="sep">30.8</td><td>35.8</td><td>23.3</td><td class="sep">46.2</td><td>47.0</td><td>43.1</td></tr>
+            <tr><td>Qwen2.5-VL-32B-Instruct</td><td>38.4</td><td>36.9</td><td class="sep">41.2</td><td>41.0</td><td class="sep">28.9</td><td>28.3</td><td>28.3</td><td class="sep">42.4</td><td>40.0</td><td>47.2</td></tr>
+            <tr><td>Qwen2.5-VL-7B-Instruct</td><td>35.5</td><td>35.2</td><td class="sep">36.4</td><td>34.3</td><td class="sep">27.3</td><td>30.0</td><td>31.7</td><td class="sep">33.9</td><td>33.5</td><td>27.2</td></tr>
+            <tr><td>InternVL3.5-38B</td><td>40.9</td><td>40.3</td><td class="sep">46.5</td><td>44.6</td><td class="sep">27.3</td><td>35.4</td><td>20.0</td><td class="sep">42.5</td><td>44.3</td><td>42.0</td></tr>
+            <tr><td>InternVL3.5-14B</td><td>32.1</td><td>31.7</td><td class="sep">39.0</td><td>40.1</td><td class="sep">31.1</td><td>37.5</td><td>16.7</td><td class="sep">42.5</td><td>38.9</td><td>47.5</td></tr>
+            <tr><td>InternVL3.5-8B</td><td>38.6</td><td>38.1</td><td class="sep">44.2</td><td>43.7</td><td class="sep">36.1</td><td>45.8</td><td>13.3</td><td class="sep">44.2</td><td>41.1</td><td>45.1</td></tr>
+            <tr><td>InternVL3-38B</td><td>42.3</td><td>42.5</td><td class="sep">48.3</td><td>44.7</td><td class="sep">33.2</td><td>49.0</td><td>20.0</td><td class="sep">45.6</td><td>45.3</td><td>39.6</td></tr>
+            <tr><td>InternVL3-14B</td><td>35.9</td><td>35.1</td><td class="sep">39.7</td><td>38.9</td><td class="sep">26.8</td><td>32.5</td><td>6.7</td><td class="sep">37.1</td><td>34.8</td><td>40.7</td></tr>
+            <tr><td>InternVL3-8B</td><td>34.4</td><td>35.5</td><td class="sep">38.9</td><td>37.2</td><td class="sep">26.7</td><td>36.7</td><td>5.7</td><td class="sep">37.3</td><td>41.3</td><td>24.3</td></tr>
+            <tr><td>GLM-4.1V-9B-Thinking</td><td>34.6</td><td>36.2</td><td class="sep">38.7</td><td>35.3</td><td class="sep">27.3</td><td>25.0</td><td>50.0</td><td class="sep">24.9</td><td>32.6</td><td>20.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">
+      Scores are percentages. <span class="best">Bold</span> marks the best model score and <span class="second">underline</span> the second best. I<sub>ACC</sub> is per-question accuracy. G<sub>ACC</sub> averages accuracy within each target group and weights every group equally. I/L/G<sub>MRA</sub> are Mean Relative Accuracy over all, localized (child) and global (parent) counting queries.
+    </p>
+    <div class="finding-box">
+      Attribute binding and numerical counting in dense same-category scenes remain far from solved. The gap to humans is largest on real images.
+    </div>
+  </div>
+</section>
+
+
+<!-- Analysis carousel -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered section-title">What Makes MIMO Hard?</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <img src="static/images/prompt.jpg" alt="Visual prompting setup replacing the referring expression with a box on the target" loading="lazy"/>
+          <h2 class="subtitle has-text-centered">
+            <b>Visual prompting.</b> We replace the textual referring expression with a box or polygon drawn on the target. The model no longer has to comprehend the expression.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/visual_prompting_tmlr.jpg" alt="Accuracy gains from visual prompting for every model" loading="lazy"/>
+          <h2 class="subtitle has-text-centered">
+            Visual prompting raises I<sub>ACC</sub> by <b>+6.0 to +25.5 points</b> (mean +15.5) for every model, yet none exceeds about 65%.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/visual_prompting.jpg" alt="Gain from visual prompting as referring expression complexity grows" loading="lazy"/>
+          <h2 class="subtitle has-text-centered">
+            The gain from visual prompting grows with the number of compositional elements in the referring expression.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/gray.jpg" alt="Graying out the image except for a window around the target" loading="lazy"/>
+          <h2 class="subtitle has-text-centered">
+            <b>Distractor reduction.</b> We gray out everything except a window around the target. Smaller windows leave fewer same-category distractors visible.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/gray_tmlr.jpg" alt="Accuracy trends as visible distractors decrease" loading="lazy"/>
+          <h2 class="subtitle has-text-centered">
+            Accuracy generally rises as fewer distractors stay in view. Blur and inpainting controls show the same trend.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/cot_performance.jpg" alt="Effect of zero-shot and self-consistency chain-of-thought prompting" loading="lazy"/>
+          <h2 class="subtitle has-text-centered">
+            <b>Chain-of-Thought</b> (zero-shot and self-consistency) gives model-dependent gains and losses. It does not reliably improve MIMO performance.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/synthetic_images.jpg" alt="Examples of synthetic MIMO scenes" loading="lazy"/>
+          <h2 class="subtitle has-text-centered">
+            Synthetic MIMO scenes broaden coverage of indoor settings, object categories and attribute configurations.
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Dynamic visual access -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered section-title">What Helps? Looking Again</h2>
+    <div class="columns is-vcentered">
+      <div class="column is-7 content has-text-justified">
+        <p>
+          In MIMO scenes, targets rarely &ldquo;pop out&rdquo;. Humans search actively, scanning the image at several scales and refining where they look. To approximate this, we run a two-turn study. The model first proposes a bounding box it believes is sufficient to answer the question, then answers again from that crop.
+        </p>
+        <p>
+          Even this <i>naive</i> relevant-region extraction improves accuracy for every model we evaluated. Models do better with dynamic visual access than with a single static forward pass.
+        </p>
+      </div>
+      <div class="column is-5">
+        <div class="table-wrap">
+          <table class="results-table">
+            <thead><tr><th>Model</th><th>&Delta; I<sub>ACC</sub></th></tr></thead>
+            <tbody>
+              <tr><td>Qwen3-VL-8B-Instruct</td><td>+0.89</td></tr>
+              <tr><td>Qwen2.5-VL-7B-Instruct</td><td>+1.50</td></tr>
+              <tr><td>InternVL3-8B</td><td>+5.46</td></tr>
+              <tr><td>InternVL3-14B</td><td class="best">+16.90</td></tr>
+              <tr><td>InternVL3.5-8B</td><td>+2.14</td></tr>
+              <tr><td>InternVL3.5-14B</td><td>+11.75</td></tr>
+              <tr><td>Qwen3-VL-32B-Instruct</td><td>+3.00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--BibTex citation -->
+<section class="section hero is-light" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <div class="bibtex-header">
+      <h2 class="title">BibTeX</h2>
+      <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+        <i class="fas fa-copy"></i>
+        <span class="copy-text">Copy</span>
+      </button>
+    </div>
+    <!-- TODO: Replace authors with the real author list -->
+    <pre id="bibtex-code"><code>@inproceedings{mimobench2026,
+  title={What do MLLMs know about ``Waldo''? Evaluating Visual Reasoning under Multi-Instance Multi-Object Challenges},
+  author={First Author and Second Author and Third Author},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2026}
+}</code></pre>
+  </div>
+</section>
+</main>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
