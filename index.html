@@ -82,7 +82,7 @@
   </noscript>
   
   <!-- Fonts - Optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Charis+SIL:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   
   <!-- Defer non-critical JavaScript -->
   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -154,22 +154,34 @@
     <i class="fas fa-chevron-up"></i>
   </button>
 
-  <!-- Navigation -->
-  <nav class="site-nav" aria-label="Page sections">
+  <!-- Navigation: top bar on all screens, table of contents in a left sidebar on wide screens -->
+  <nav class="site-nav" aria-label="Site">
     <div class="site-nav-inner">
       <a class="site-nav-brand" href="#top">MIMO-Bench</a>
-      <div class="site-nav-links">
-        <a href="#abstract">Abstract</a>
-        <a href="#key-findings">Key Findings</a>
-        <a href="#benchmark">Benchmark</a>
-        <a href="#results">Results</a>
-        <a href="#findings">Analysis</a>
-        <a href="#BibTeX">BibTeX</a>
-        <a class="site-nav-ext" href="static/pdfs/paper.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
-        <a class="site-nav-ext" href="https://saumya-svm.github.io/"><i class="fas fa-home"></i> Homepage</a>
+      <div class="site-nav-actions">
+        <button class="site-nav-toc-toggle" type="button" aria-expanded="false" aria-controls="toc">
+          <i class="fas fa-list-ul"></i> Contents
+        </button>
+        <a class="site-nav-btn" href="static/pdfs/paper.pdf" target="_blank"><i class="fas fa-file-pdf"></i><span>Paper</span></a>
+        <a class="site-nav-btn site-nav-home" href="https://saumya-svm.github.io/"><i class="fas fa-home"></i><span>Homepage</span></a>
       </div>
     </div>
   </nav>
+
+  <aside class="toc" id="toc" aria-label="Contents">
+    <div class="toc-title">Contents</div>
+    <ol class="toc-list">
+      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#key-findings">Key Findings</a></li>
+      <li><a href="#benchmark">MIMO-Bench</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#findings">What Makes MIMO Hard?</a></li>
+      <li><a href="#BibTeX">BibTeX</a></li>
+    </ol>
+    <div class="toc-footer">
+      <a href="https://saumya-svm.github.io/"><i class="fas fa-arrow-left"></i> Saumya Mundra's homepage</a>
+    </div>
+  </aside>
 
   <main id="main-content">
   <section class="hero" id="top">
@@ -180,7 +192,8 @@
             <h1 class="title is-1 publication-title">What do MLLMs know about &ldquo;Waldo&rdquo;?</h1>
             <h2 class="subtitle is-4">Evaluating Visual Reasoning under Multi-Instance Multi-Object Challenges</h2>
             <div class="is-size-5 publication-authors">
-              <span class="author-block">Saumya Mundra<sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://saumya-svm.github.io/" target="_blank">Saumya Mundra</a><sup>1</sup>,</span>
               <span class="author-block">
                 <a href="https://scholar.google.com/citations?user=ai9lifYAAAAJ&hl=en" target="_blank">Ajoy Mondal</a><sup>1</sup>,</span>
               <span class="author-block">

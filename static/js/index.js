@@ -142,9 +142,33 @@ $(document).ready(function() {
 
 })
 
-// Highlight the nav link for the section currently in view
+// Table of contents: highlight the section in view, and toggle the dropdown on narrow screens
 document.addEventListener('DOMContentLoaded', function() {
-    const links = document.querySelectorAll('.site-nav-links a[href^="#"]');
+    const toc = document.getElementById('toc');
+    const toggle = document.querySelector('.site-nav-toc-toggle');
+    const links = document.querySelectorAll('.toc-list a');
+
+    const closeToc = () => {
+        if (!toc || !toggle) return;
+        toc.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+    };
+
+    if (toc && toggle) {
+        toggle.addEventListener('click', event => {
+            event.stopPropagation();
+            const open = toc.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', String(open));
+        });
+        document.addEventListener('click', event => {
+            if (!toc.contains(event.target)) closeToc();
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') closeToc();
+        });
+        links.forEach(link => link.addEventListener('click', closeToc));
+    }
+
     const sections = Array.from(links)
         .map(link => document.querySelector(link.getAttribute('href')))
         .filter(Boolean);
@@ -154,12 +178,10 @@ document.addEventListener('DOMContentLoaded', function() {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return;
             links.forEach(link => {
-                const isActive = link.getAttribute('href') === '#' + entry.target.id;
-                link.classList.toggle('active', isActive);
-                if (isActive) link.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+                link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
             });
         });
-    }, { rootMargin: '-45% 0px -50% 0px' });
+    }, { rootMargin: '-40% 0px -55% 0px' });
 
     sections.forEach(section => observer.observe(section));
 });
